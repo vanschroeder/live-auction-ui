@@ -2,12 +2,12 @@ import {
   inject,
   ComponentFixture,
   TestBed
-} from '@angular/core/testing';
-import { expect } from 'chai';
-import { HelloWorldComponent } from '../src/auction.component';
-import { LiveAuctionUiModule } from '../src';
+} from "@angular/core/testing";
+import { expect } from "chai";
+import { AuctionComponent } from "../src/auction.component";
+import { LiveAuctionUiModule } from "../src";
 
-describe('LiveAuction-hello-world component', () => {
+describe("LiveAuction-hello-world component", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -17,10 +17,10 @@ describe('LiveAuction-hello-world component', () => {
     });
   });
 
-  it('should say hello world', () => {
-    const fixture: ComponentFixture<HelloWorldComponent> = TestBed.createComponent(HelloWorldComponent);
+  it("should say hello world", () => {
+    const fixture: ComponentFixture<AuctionComponent> = TestBed.createComponent(AuctionComponent);
     fixture.detectChanges();
-    expect(fixture.nativeElement.innerHTML.trim()).to.equal('Hello world from the live auction ui module!');
+    expect(fixture.nativeElement.innerHTML.trim()).to.equal("Hello world from the live auction ui module!");
   });
 
 });

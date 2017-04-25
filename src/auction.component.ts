@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: "auction-ui",
-  template: "Hello world from the {{ projectTitle }} module!'
+  selector: "LiveAuction-auction-ui",
+  templateUrl: "./src/auction.component.html"
 })
-export class HelloWorldComponent {
-  projectTitle: string = 'live auction ui';
+
+export class AuctionComponent {
+  stream_src: string = "http://dash.edgesuite.net/envivio/EnvivioDash3/manifest.mpd";
 }

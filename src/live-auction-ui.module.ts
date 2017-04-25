@@ -1,16 +1,16 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HelloWorldComponent } from './hello-world.component';
-
+import { NgModule, ModuleWithProviders } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { AuctionComponent } from "./auction.component";
+/// <reference path="dashjs/index.d.ts" />
 @NgModule({
   declarations: [
-    HelloWorldComponent
+   AuctionComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    HelloWorldComponent
+    AuctionComponent
   ]
 })
 export class LiveAuctionUiModule {
