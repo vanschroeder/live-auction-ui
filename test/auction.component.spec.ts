@@ -4,7 +4,7 @@ import {
   TestBed
 } from '@angular/core/testing';
 import { expect } from 'chai';
-import { HelloWorldComponent } from '../src/hello-world.component';
+import { HelloWorldComponent } from '../src/auction.component';
 import { LiveAuctionUiModule } from '../src';
 
 describe('LiveAuction-hello-world component', () => {
