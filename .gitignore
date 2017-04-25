@@ -1,4 +1,5 @@
 # build cache
+main-*.js
 main-*.js.*
 
 # Logs
