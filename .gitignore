@@ -1,3 +1,6 @@
+# build cache
+main-*.js.*
+
 # Logs
 logs
 *.log
