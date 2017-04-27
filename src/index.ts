@@ -1,1 +1,1 @@
-export * from "./live-auction-ui.module";
+export * from "./auction-ui.module";

@@ -1,11 +1,11 @@
 {
   "generator-angular-library": {
     "githubUsername": "vancarney",
-    "githubRepoName": "live-auction-ui",
-    "npmModuleName": "live-auction-ui",
-    "moduleGlobal": "liveAuctionUi",
-    "ngModuleName": "LiveAuctionUiModule",
-    "selectorPrefix": "LiveAuction",
+    "githubRepoName": "auction-ui",
+    "npmModuleName": "auction-ui",
+    "moduleGlobal": "AuctionUi",
+    "ngModuleName": "AuctionUiModule",
+    "selectorPrefix": "AuctionUi",
     "projectTitle": "live auction ui",
     "projectDescription": "UI for Live Video Auctions",
     "authorName": "vancarney"

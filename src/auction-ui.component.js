@@ -9,17 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var DemoComponent = (function () {
-    function DemoComponent() {
+var login_service_1 = require("./login/login.service");
+var AuctionUiComponent = (function () {
+    function AuctionUiComponent(loginservice) {
+        this.loginservice = loginservice;
     }
-    DemoComponent = __decorate([
+    AuctionUiComponent = __decorate([
         core_1.Component({
-            selector: "auction-demo-app",
-            template: "<auction-ui></auction-ui>"
+            selector: "auction-ui",
+            templateUrl: "src/auction-ui.component.html"
         }), 
-        __metadata('design:paramtypes', [])
-    ], DemoComponent);
-    return DemoComponent;
+        __metadata('design:paramtypes', [login_service_1.LoginService])
+    ], AuctionUiComponent);
+    return AuctionUiComponent;
 }());
-exports.DemoComponent = DemoComponent;
-//# sourceMappingURL=demo.component.js.map
+exports.AuctionUiComponent = AuctionUiComponent;
+//# sourceMappingURL=auction-ui.component.js.map

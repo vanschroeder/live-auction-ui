@@ -9,17 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var DemoComponent = (function () {
-    function DemoComponent() {
+var login_service_1 = require("./login.service");
+var LoginComponent = (function () {
+    function LoginComponent(loginService) {
+        this.loginService = loginService;
     }
-    DemoComponent = __decorate([
+    LoginComponent.prototype.login = function () {
+        this.loginService.joinAuction(this.username);
+    };
+    LoginComponent = __decorate([
         core_1.Component({
-            selector: "auction-demo-app",
-            template: "<auction-ui></auction-ui>"
+            selector: "login",
+            templateUrl: "src/login/login.component.html",
+            providers: [login_service_1.LoginService]
         }), 
-        __metadata('design:paramtypes', [])
-    ], DemoComponent);
-    return DemoComponent;
+        __metadata('design:paramtypes', [login_service_1.LoginService])
+    ], LoginComponent);
+    return LoginComponent;
 }());
-exports.DemoComponent = DemoComponent;
-//# sourceMappingURL=demo.component.js.map
+exports.LoginComponent = LoginComponent;
+//# sourceMappingURL=login.component.js.map

@@ -1,4 +1,4 @@
-# live auction ui
+# auction ui
 [![Build Status](https://travis-ci.org/vancarney/live-auction-ui.svg?branch=master)](https://travis-ci.org/vancarney/live-auction-ui)
 [![codecov](https://codecov.io/gh/vancarney/live-auction-ui/branch/master/graph/badge.svg)](https://codecov.io/gh/vancarney/live-auction-ui)
 [![npm version](https://badge.fury.io/js/live-auction-ui.svg)](http://badge.fury.io/js/live-auction-ui)
@@ -8,7 +8,7 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/vancarney/live-auction-ui/master/LICENSE)
 
 ## Demo
-https://vancarney.github.io/live-auction-ui/
+https://vancarney.github.io/auction-ui/
 
 ## Table of contents
 
@@ -26,18 +26,18 @@ UI for Live Video Auctions
 
 Install through npm:
 ```
-npm install --save live-auction-ui
+npm install --save auction-ui
 ```
 
 Then include in your apps module:
 
 ```typescript
 import { Component, NgModule } from '@angular/core';
-import { LiveAuctionUiModule } from 'live-auction-ui';
+import { AuctionUiModule } from 'live-auction-ui';
 
 @NgModule({
   imports: [
-    LiveAuctionUiModule.forRoot()
+    AuctionUiModule.forRoot()
   ]
 })
 export class MyModule {}
@@ -48,7 +48,7 @@ Finally use in one of your apps components:
 import { Component } from '@angular/core';
 
 @Component({
-  template: '<hello-world></hello-world>'
+  template: '<auction-ui></auction-ui>'
 })
 export class MyComponent {}
 ```
@@ -57,15 +57,15 @@ You may also find it useful to view the [demo source](https://github.com/vancarn
 
 ### Usage without a module bundler
 ```
-<script src="node_modules/live-auction-ui/bundles/live-auction-ui.umd.js"></script>
+<script src="node_modules/auction-ui/bundles/auction-ui.umd.js"></script>
 <script>
-    // everything is exported liveAuctionUi namespace
+    // everything is exported AuctionUi namespace
 </script>
 ```
 
 ## Documentation
 All documentation is auto-generated from the source via [compodoc](https://compodoc.github.io/compodoc/) and can be viewed here:
-https://vancarney.github.io/live-auction-ui/docs/
+https://vancarney.github.io/auction-ui/docs/
 
 ## Development
 
