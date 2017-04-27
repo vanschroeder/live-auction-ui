@@ -26,7 +26,7 @@ UI for Live Video Auctions
 
 Install through npm:
 ```
-npm install --save auction-ui
+npm install --save vancarney/live-auction-ui
 ```
 
 Then include in your apps module:
