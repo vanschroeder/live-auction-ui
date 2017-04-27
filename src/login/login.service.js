@@ -11,27 +11,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var core_1 = require('@angular/core');
+Object.defineProperty(exports, "__esModule", { value: true });
+var Subject_1 = require("rxjs/Subject");
+var core_1 = require("@angular/core");
 var bidding_service_1 = require("../bidding/bidding.service");
 var LoginService = (function () {
     function LoginService(biddingService) {
-        this.biddingService = biddingService;
-    }
-    LoginService.prototype.joinAuction = function (username) {
         var _this = this;
-        this.biddingService.joinAuction(username).subscribe(function (event) {
-            _this.isAuthorized = event["authed"];
-            console.log("isAuthorized: " + _this.isAuthorized);
-        });
-    };
-    LoginService.prototype.leaveAuction = function () {
-        this.biddingService.leaveAuction();
-    };
-    LoginService = __decorate([
-        __param(0, core_1.Inject(bidding_service_1.BiddingService)), 
-        __metadata('design:paramtypes', [Object])
-    ], LoginService);
+        this.biddingService = biddingService;
+        this.authChangeSource = new Subject_1.Subject();
+        this.authChange$ = this.authChangeSource.asObservable();
+        this.joinAuction = function (username) {
+            _this.biddingService.joinAuction(username).subscribe(function (event) {
+                console.log("subbing to joinAuction event: " + event["authed"]);
+                _this.isAuthorized = event["authed"];
+                _this.authChangeSource.next(_this.isAuthorized);
+            });
+        };
+        this.leaveAuction = function () {
+            _this.biddingService.leaveAuction();
+        };
+    }
     return LoginService;
 }());
+LoginService = __decorate([
+    core_1.Injectable(),
+    __param(0, core_1.Inject(bidding_service_1.BiddingService)),
+    __metadata("design:paramtypes", [bidding_service_1.BiddingService])
+], LoginService);
 exports.LoginService = LoginService;
 //# sourceMappingURL=login.service.js.map

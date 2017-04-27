@@ -8,35 +8,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var bidding_service_1 = require("./bidding.service");
 var BiddingComponent = (function () {
     function BiddingComponent(biddingService) {
+        var _this = this;
         this.biddingService = biddingService;
         this.currentBid = 0.00;
+        this.sendBid = function () {
+            _this.biddingService.sendBid(_this.currentBid + 1.00);
+        };
+        this.ngOnInit = function () {
+            _this.connection = _this.biddingService.getBids().subscribe(function (bid) {
+                console.log(bid);
+                _this.currentBid = Number(bid);
+            });
+        };
+        this.ngOnDestroy = function () {
+            _this.connection.unsubscribe();
+        };
     }
-    BiddingComponent.prototype.sendBid = function () {
-        this.biddingService.sendBid(this.currentBid + 1.00);
-    };
-    BiddingComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.connection = this.biddingService.getBids().subscribe(function (bid) {
-            console.log(bid);
-            _this.currentBid = Number(bid);
-        });
-    };
-    BiddingComponent.prototype.ngOnDestroy = function () {
-        this.connection.unsubscribe();
-    };
-    BiddingComponent = __decorate([
-        core_1.Component({
-            selector: "bidding-component",
-            templateUrl: "src/bidding/bidding.component.html",
-            providers: [bidding_service_1.BiddingService]
-        }), 
-        __metadata('design:paramtypes', [bidding_service_1.BiddingService])
-    ], BiddingComponent);
     return BiddingComponent;
 }());
+BiddingComponent = __decorate([
+    core_1.Component({
+        selector: "bidding-component",
+        templateUrl: "src/bidding/bidding.component.html",
+        providers: [bidding_service_1.BiddingService]
+    }),
+    __metadata("design:paramtypes", [bidding_service_1.BiddingService])
+], BiddingComponent);
 exports.BiddingComponent = BiddingComponent;
 //# sourceMappingURL=bidding.component.js.map

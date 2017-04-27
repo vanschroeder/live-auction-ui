@@ -1,4 +1,4 @@
-import { Component, OnInit,OnDestroy } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { BiddingService } from "./bidding.service";
 
 @Component({
@@ -9,22 +9,22 @@ import { BiddingService } from "./bidding.service";
 
 export class BiddingComponent implements OnInit, OnDestroy {
     currentBid: number = 0.00;
-    connection;
+    connection : any;
 
-    constructor(private biddingService:BiddingService) {}
+    constructor(private biddingService : BiddingService) {}
 
-    sendBid(){
-        this.biddingService.sendBid(this.currentBid+1.00);
+    sendBid = () => {
+        this.biddingService.sendBid(this.currentBid + 1.00);
     }
 
-    ngOnInit() {
+    ngOnInit = () => {
         this.connection = this.biddingService.getBids().subscribe(bid => {
-            console.log(bid)
-            this.currentBid = Number(bid)
-        })
+            console.log(bid);
+            this.currentBid = Number(bid);
+        });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy = () => {
         this.connection.unsubscribe();
     }
 }

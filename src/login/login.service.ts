@@ -1,19 +1,26 @@
 import { Subject } from "rxjs/Subject";
 import { Observable } from "rxjs/Observable";
-import { Inject } from '@angular/core';
+import { Inject, Injectable } from "@angular/core";
 import { BiddingService } from "../bidding/bidding.service";
 
+@Injectable()
 export class LoginService {
-    constructor(@Inject(BiddingService) private biddingService) {}
+    authChangeSource: Subject<boolean> = new Subject<boolean>();
+
     public isAuthorized: boolean;
-    joinAuction(username) {
-        this.biddingService.joinAuction(username).subscribe((event) => {
+    public authChange$ : any = this.authChangeSource.asObservable();
+
+    joinAuction = (username : string) => {
+        this.biddingService.joinAuction(username).subscribe((event : any) => {
+            console.log("subbing to joinAuction event: " + event["authed"]);
             this.isAuthorized = event["authed"];
-            console.log("isAuthorized: "+ this.isAuthorized);
+            this.authChangeSource.next(this.isAuthorized);
         });
     }
 
-    leaveAuction() {
-        this.biddingService.leaveAuction()
+    leaveAuction = () => {
+        this.biddingService.leaveAuction();
     }
+
+    constructor(@Inject(BiddingService) private biddingService : BiddingService) {}
 }

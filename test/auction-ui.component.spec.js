@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var testing_1 = require("@angular/core/testing");
 var chai_1 = require("chai");
 var auction_ui_component_1 = require("../src/auction-ui.component");

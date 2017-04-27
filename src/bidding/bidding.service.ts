@@ -1,16 +1,14 @@
-import { Subject } from "rxjs/Subject";
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import * as io from "socket.io-client";
 
 @Injectable()
 export class BiddingService {
-    private url = "http://localhost:3000";
-    private socket;
+    private url : string = "http://localhost:3000";
+    private socket : any = io(this.url);
 
-    joinAuction(username) {
-        let observable = new Observable(observer => {
-            this.socket = io(this.url);
+    joinAuction = (username : string) => {
+        let observable : any = new Observable(observer => {
 
             this.socket.on("connect", (data) => {
                this.socket.emit("username", username);
@@ -32,27 +30,28 @@ export class BiddingService {
         return observable;
     }
 
-    leaveAuction() {
+    leaveAuction = () => {
         this.socket.disconnect();
     }
 
-    sendBid(bid){
+    sendBid = (bid : number) => {
         this.socket.emit("bid", bid);
     }
 
-    getBids() {
-        let observable = new Observable(observer => {
-            this.socket.on("bidUpdate", (data) => {
+    getBids = () => {
+        let observable : any = new Observable(observer => {
+            this.socket.on("bidUpdate", (data : any) => {
                 observer.next(data);
             });
-            this.socket.on("biddersCount", (data) => {
+            this.socket.on("biddersCount", (data : any) => {
                 observer.next(data);
             });
 
             return () => {
                 this.socket.disconnect();
             };
-        })
+        });
+
         return observable;
     }
 }
