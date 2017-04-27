@@ -13,7 +13,7 @@ var BiddingService = (function () {
     function BiddingService() {
         var _this = this;
         this.url = "http://localhost:3000";
-        this.socket = io(this.url);
+        this.socket = io(this.url, { autoConnect: false });
         this.joinAuction = function (username) {
             var observable = new Observable_1.Observable(function (observer) {
                 _this.socket.on("connect", function (data) {
@@ -29,26 +29,35 @@ var BiddingService = (function () {
                 _this.socket.on("disconnected", function (data) {
                     observer.next({ authed: false });
                 });
+                return function () {
+                    _this.socket.disconnect();
+                };
             });
+            _this.socket.open();
             return observable;
         };
         this.leaveAuction = function () {
             _this.socket.disconnect();
         };
         this.sendBid = function (bid) {
+            console.log("bid " + bid);
             _this.socket.emit("bid", bid);
         };
         this.getBids = function () {
             var observable = new Observable_1.Observable(function (observer) {
                 _this.socket.on("bidUpdate", function (data) {
+                    console.log("bidUpdate: " + data);
                     observer.next(data);
                 });
+            });
+            _this.socket.emit("bidStatus", null);
+            return observable;
+        };
+        this.getBidders = function () {
+            var observable = new Observable_1.Observable(function (observer) {
                 _this.socket.on("biddersCount", function (data) {
                     observer.next(data);
                 });
-                return function () {
-                    _this.socket.disconnect();
-                };
             });
             return observable;
         };

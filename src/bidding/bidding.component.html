@@ -1,1 +1,1 @@
-<input [(ngModel)]="currentBid" /><button (click)="sendBid()">bid</button>
+<span>current bid:&nbsp;<strong>{{currentBid | currency:'USD':true:'1.2'}}</strong></span><button (click)="sendBid()">bid</button>

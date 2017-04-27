@@ -23,7 +23,6 @@ var LoginService = (function () {
         this.authChange$ = this.authChangeSource.asObservable();
         this.joinAuction = function (username) {
             _this.biddingService.joinAuction(username).subscribe(function (event) {
-                console.log("subbing to joinAuction event: " + event["authed"]);
                 _this.isAuthorized = event["authed"];
                 _this.authChangeSource.next(_this.isAuthorized);
             });

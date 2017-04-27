@@ -1,5 +1,4 @@
 import { Subject } from "rxjs/Subject";
-import { Observable } from "rxjs/Observable";
 import { Inject, Injectable } from "@angular/core";
 import { BiddingService } from "../bidding/bidding.service";
 
@@ -12,7 +11,6 @@ export class LoginService {
 
     joinAuction = (username : string) => {
         this.biddingService.joinAuction(username).subscribe((event : any) => {
-            console.log("subbing to joinAuction event: " + event["authed"]);
             this.isAuthorized = event["authed"];
             this.authChangeSource.next(this.isAuthorized);
         });

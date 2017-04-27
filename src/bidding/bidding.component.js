@@ -20,22 +20,23 @@ var BiddingComponent = (function () {
             _this.biddingService.sendBid(_this.currentBid + 1.00);
         };
         this.ngOnInit = function () {
-            _this.connection = _this.biddingService.getBids().subscribe(function (bid) {
-                console.log(bid);
-                _this.currentBid = Number(bid);
-            });
+            console.log("init getBids");
         };
         this.ngOnDestroy = function () {
             _this.connection.unsubscribe();
         };
+        console.log("constructor");
+        this.connection = this.biddingService.getBids().subscribe(function (bid) {
+            console.log("currentBid " + bid);
+            _this.currentBid = Number(bid);
+        });
     }
     return BiddingComponent;
 }());
 BiddingComponent = __decorate([
     core_1.Component({
         selector: "bidding-component",
-        templateUrl: "src/bidding/bidding.component.html",
-        providers: [bidding_service_1.BiddingService]
+        templateUrl: "src/bidding/bidding.component.html"
     }),
     __metadata("design:paramtypes", [bidding_service_1.BiddingService])
 ], BiddingComponent);
