@@ -8,7 +8,7 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/vancarney/live-auction-ui/master/LICENSE)
 
 ## Demo
-https://vancarney.github.io/auction-ui/
+https://vancarney.github.io/live-auction-ui/
 
 ## Table of contents
 
